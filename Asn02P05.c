@@ -14,9 +14,7 @@ NODE createLL(int N,int Ltype)
         printf("No Node is Created.\n");
         exit(0);
     }
-    if(Ltype==0)
-    {
-        NODE ptr,temp,ptr1;
+    NODE ptr,temp,ptr1;
         NODE head = NULL;
         ptr=(NODE)malloc(sizeof(struct node));
         if(ptr==NULL)
@@ -41,55 +39,29 @@ NODE createLL(int N,int Ltype)
                 }
                 else
                 {
-                    scanf("%d",&ptr1->data);
-                    ptr1->link=NULL;
-                    temp->link=ptr1;
-                    //temp=temp->link;
-                    temp=ptr1;
+                    if(Ltype==0)
+                    {
+                        scanf("%d",&ptr1->data);
+                        ptr1->link=NULL;
+                        temp->link=ptr1;
+                        temp=ptr1;
+                    }
+                    else
+                    {
+                        scanf("%d",&ptr1->data);
+                        ptr1->link=NULL;
+                        temp->link=ptr1;
+                        temp=ptr1;
+                    }
                 }
                 N--;
             }
-        }
-        return head;
-    }
-    if(Ltype==1)
-    {
-        NODE ptr,temp,ptr1;
-        NODE head = NULL;
-        ptr=(NODE)malloc(sizeof(struct node));
-        if(ptr==NULL)
-        {
-            printf("No Memory Allocated \n");
-            exit(0);
-        }
-        else
-        {
-            printf("Enter data of node : \n");
-            scanf("%d",&ptr->data);
-            ptr->link=NULL;
-            head=ptr;
-            temp=ptr;
-            while(N!=1)
+            if(Ltype==1)
             {
-                ptr1=(NODE)malloc(sizeof(struct node));
-                if(ptr1==NULL)
-                {
-                    printf("No Memory Allocated \n");
-                    exit(0);
-                }
-                else
-                {
-                    scanf("%d",&ptr1->data);
-                    ptr1->link=NULL;
-                    temp->link=ptr1;
-                    temp=ptr1;
-                }
-                N--;
+                temp->link=ptr;
             }
-            temp->link=ptr;
         }
         return head;
-    }
 }
 
 int main(int argc,char *argv[])
